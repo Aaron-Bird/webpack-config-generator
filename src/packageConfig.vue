@@ -1,6 +1,6 @@
 <template>
-    <div>
-        <h3>{{currPackagedisplayName}}</h3>
+    <div class="package-config">
+        <h2>{{currPackagedisplayName}}</h2>
         <component :is="currentPackagePage"></component>
     </div>
 </template>
@@ -43,10 +43,10 @@ export default {
 </script>
 
 <style>
-#package-config input {
+.package-config input {
     position: relative;
     width: 100%;
-    padding: 4px 10px;
+    padding: 8px 0;
     font-size: 0.875rem;
     border: 0;
     border-bottom: 1px solid rgba(0, 0, 0, 0.4);
@@ -54,19 +54,23 @@ export default {
     background: inherit;
 }
 
-#package-config input[type] {
+.package-config .option {
+    font-size: 1.2rem;
+}
+
+.package-config input[type] {
     width: auto;
 }
 
-#package-config input[type]:after {
+.package-config input[type]:after {
     display: none;
 }
 
-#package-config input[type='radio'] {
+.package-config input[type='radio'] {
     vertical-align: -2px;
 }
 
-#package-config input[type='checkbox'] {
+.package-config input[type='checkbox'] {
     vertical-align: -1px;
 }
 </style>

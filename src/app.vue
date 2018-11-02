@@ -77,11 +77,11 @@ main #webpack-config-wrap {
 .logo {
     height: 120px;
     padding: 14px 0 16px 30px;
-    font-family: 'Josefin Sans', sans-serif;
+    font-family: 'Roboto', sans-serif;
     font-size: 1.1rem;
     line-height: 1.8rem;
     letter-spacing: 8.5px;
-    color: #fff;
+    color: rgba(255, 255, 255, 0.8);
     background: rgba(0, 0, 0, 0.9);
 }
 </style>
@@ -108,7 +108,7 @@ main {
     top: 40%;
     left: 50%;
     display: block;
-    font-family: 'Josefin Sans', sans-serif;
+    font-family: 'Roboto', sans-serif;
     font-size: 40px;
     font-weight: 700;
     content: 'webpack config generator';
@@ -137,7 +137,12 @@ main {
     }
 }
 
-main #package-config-wrap:before,
+main #package-config-wrap,
+main #webpack-config-wrap {
+    border-left: 1px solid rgba(0,0,0,0.2);
+}
+
+/* main #package-config-wrap:before,
 main #webpack-config-wrap:before {
     position: absolute;
     top: 0;
@@ -158,5 +163,5 @@ main #webpack-config-wrap:before {
     100% {
         height: 100%;
     }
-}
+} */
 </style>

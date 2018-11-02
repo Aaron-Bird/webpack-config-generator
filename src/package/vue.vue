@@ -1,6 +1,4 @@
-<template>
-    <div id="package-config"></div>
-</template>
+<template></template>
 
 <script>
 import Store from '../util.js';

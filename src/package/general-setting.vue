@@ -1,29 +1,29 @@
 <template>
-    <div id="package-config">
+    <div>
         <p>
-            <label>mode:</label>
+            <label class="option">mode:</label>
             <input v-model="config.mode" value="development" type="radio" name="mode">
             <label>development</label>
             <input v-model="config.mode" value="production" type="radio" name="mode">
             <label>production</label>
         </p>
         <p>
-            <label>entry:</label>
+            <label class="option">entry:</label>
             <input v-model.trim="config.entry[0].value">
         </p>
         <p>
-            <label>output.filename:</label>
+            <label class="option">output.filename:</label>
             <input v-model.trim="config.output.filename">
         </p>
         <p>
-            <label>output.path:</label>
+            <label class="option">output.path:</label>
             <input
                 @input="outputPathEvent($event, 'State.generalSetting.config.output', 'path')"
                 :value="outputPath"
             >
         </p>
         <p>
-            <label>devtool:</label>
+            <label class="option">devtool:</label>
             <input v-model="config.devtool" value="source-map" type="radio" name="devtool">
             <label>source-map</label>
             <input v-model="config.devtool" value="none" type="radio" name="devtool">

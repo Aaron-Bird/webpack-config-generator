@@ -5638,11 +5638,6 @@ webpack-dev-server@^3.1.10:
     webpack-log "^2.0.0"
     yargs "12.0.2"
 
-webpack-filter-warnings-plugin@^1.2.0:
-  version "1.2.0"
-  resolved "https://registry.yarnpkg.com/webpack-filter-warnings-plugin/-/webpack-filter-warnings-plugin-1.2.0.tgz#ffddc536be126c3cbd7abf7ab6acc7a7004e7262"
-  integrity sha512-gmSWFcnxr60v/euYp4HHFjVjQ5HzsaCb/AYUeFTvWd0EIqamIEojOR4aUpV3nqMoGZKjM+OboSrLWo1LxQ+sgg==
-
 webpack-log@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/webpack-log/-/webpack-log-2.0.0.tgz#5b7928e0637593f119d32f6227c1e0ac31e1b47f"

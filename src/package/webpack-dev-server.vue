@@ -1,31 +1,31 @@
 <template>
     <div id="package-config">
         <p>
-            <label>contentBase:</label>
+            <label class="option">contentBase:</label>
             <input v-model.trim="config.devServer.contentBase">
         </p>
         <p>
-            <label>watchContentBase:</label>
+            <label class="option">watchContentBase:</label>
             <input type="checkbox" v-model="config.devServer.watchContentBase">
         </p>
         <p>
-            <label>host:</label>
+            <label class="option">host:</label>
             <input v-model.trim="config.devServer.host">
         </p>
         <p>
-            <label>port:</label>
+            <label class="option">port:</label>
             <input v-model.number="config.devServer.port">
         </p>
         <p>
-            <label>open:</label>
+            <label class="option">open:</label>
             <input type="checkbox" v-model="config.devServer.open">
         </p>
         <p>
-            <label>public:</label>
+            <label class="option">public:</label>
             <input v-model.trim="config.devServer.public">
         </p>
         <p>
-            <label>hot:</label>
+            <label class="option">hot:</label>
             <input type="checkbox" @click="hotEvent($event)" :checked="config.devServer.hot">
         </p>
     </div>

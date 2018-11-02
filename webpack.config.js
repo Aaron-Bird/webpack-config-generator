@@ -2,7 +2,6 @@ const path = require('path');
 const webpack = require('webpack');
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const FilterWarningsPlugin = require('webpack-filter-warnings-plugin');
 
 module.exports = {
     mode: 'development',
@@ -67,9 +66,6 @@ module.exports = {
         new HtmlWebpackPlugin({
             template: './src/index.html'
         }),
-        new webpack.HotModuleReplacementPlugin(),
-        new FilterWarningsPlugin({
-            exclude: /Critical dependency: the request of a dependency is an expression/,
-        }),
+        new webpack.HotModuleReplacementPlugin()
     ],
 };

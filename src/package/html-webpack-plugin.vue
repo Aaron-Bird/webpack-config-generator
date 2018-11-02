@@ -1,6 +1,6 @@
 <template>
     <p>
-        <label>inject</label>
+        <label class="option">inject:</label>
         <input type="radio" name="inject" value="head" v-model="inject">
         <label>head</label>
         <input type="radio" name="inject" value="body" v-model="inject">

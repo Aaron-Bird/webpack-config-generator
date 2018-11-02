@@ -8,7 +8,7 @@
 
 <script>
 import Store from './util.js';
-import Beautify from 'js-beautify/js';
+// import Beautify from 'js-beautify/js';
 import Prism from 'prismjs';
 import 'prismjs/themes/prism-solarizedlight.css';
 
@@ -56,10 +56,10 @@ export default {
             let code = '';
             code += this.getRequireCode();
             code += this.getModuleExportsCode() + '\n';
-            code = Beautify(code, {
-                indent_size: 4,
-                wrap_line_length: 80
-            });
+            // code = Beautify(code, {
+            //     indent_size: 4,
+            //     wrap_line_length: 80
+            // });
             return code;
         },
         getRequireCode() {
@@ -161,27 +161,36 @@ export default {
             code += ';';
             return code;
         },
-        convModuleExportsToStr(value) {
+        convModuleExportsToStr(value, intendSize = 4) {
             let type = this.getType(value);
             let code = '';
+
             if (type === 'Object') {
                 let keyList = Object.keys(value);
                 let keyListLen = keyList.length;
 
                 code += '{';
+                code += '\n';
                 for (let i = 0; i < keyListLen; i++) {
                     let key = keyList[i];
-                    code += key + ': ' + this.convModuleExportsToStr(value[key]);
+                    code += ' '.repeat(intendSize);
+                    code += key + ': ' + this.convModuleExportsToStr(value[key], intendSize + 4);
                     if (i !== keyListLen - 1) code += ', ';
+                    code += '\n';
                 }
+                code += ' '.repeat(intendSize - 4);
                 code += '}';
             } else if (type === 'Array') {
                 code += '[';
+                code += '\n';
                 let valueLen = value.length;
                 for (let i = 0; i < valueLen; i++) {
-                    code += this.convModuleExportsToStr(value[i]);
+                    code += ' '.repeat(intendSize);
+                    code += this.convModuleExportsToStr(value[i], intendSize + 4);
                     if (i !== valueLen - 1) code += ', ';
+                    code += '\n';
                 }
+                code += ' '.repeat(intendSize - 4);
                 code += ']';
             } else if (type === 'String') {
                 if (/^%([\w\W]*)%$/.test(value)) {
@@ -239,7 +248,7 @@ div {
 }
 
 #download-webpack-config {
-    position: absolute;
+    position: fixed;
     bottom: 20px;
     right: 10px;
     width: 40px;
@@ -247,6 +256,7 @@ div {
     background: rgba(0, 0, 0, 0.9);
     border-radius: 3px;
     cursor: pointer;
+    transition: 0.2s ease;
 }
 
 #download-webpack-config:before {
@@ -264,6 +274,9 @@ div {
     background-repeat: no-repeat;
     opacity: 0.6;
     transition: 0.4s;
+}
+
+#download-webpack-config:hover {
 }
 
 #download-webpack-config:hover:before {
