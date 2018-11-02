@@ -1,0 +1,4 @@
+# ignore npm package
+node_modules/
+bin/
+yarn-error.log
