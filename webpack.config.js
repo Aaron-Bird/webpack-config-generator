@@ -2,7 +2,6 @@ const path = require('path');
 const webpack = require('webpack');
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-
 module.exports = {
     mode: 'development',
     entry: {
@@ -24,6 +23,7 @@ module.exports = {
         public: '127.0.0.1:8000',
         hot: true
     },
+
     module: {
         rules: [{
             test: /\.vue$/,
@@ -67,5 +67,5 @@ module.exports = {
             template: './src/index.html'
         }),
         new webpack.HotModuleReplacementPlugin()
-    ],
+    ]
 };

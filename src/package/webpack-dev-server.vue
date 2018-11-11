@@ -51,7 +51,7 @@ const packageInfo = {
             {
                 key: 'webpackDevServer',
                 value: [
-                    'webpack-dev-server/client?http://0.0.0.0:8080',
+                    'webpack-dev-server/client?http://0.0.0.0:8000',
                     'webpack/hot/only-dev-server'
                 ],
                 weight: 1
@@ -78,17 +78,37 @@ Store.commit('addPackage', {
 export default {
     data() {
         return {
-            config: packageInfo.config
+            config: packageInfo.config,
+            entry: packageInfo.config.entry
         };
+    },  
+    watch: {
+        'config.devServer.host': function() {
+            this.entryPoint();
+        },
+        'config.devServer.port': function() {
+            this.entryPoint();
+        }
     },
     methods: {
-        hotEvent: function(event) {
+        hotEvent(event) {
             let checked = event.target.checked;
-            this.config.devServer.hot = checked;
+            let config = this.config;
+            config.devServer.hot = checked;
             if (checked) {
-                this.$set(this.config, 'plugins', ['%new webpack.HotModuleReplacementPlugin()%']);
+                config.plugins = ['%new webpack.HotModuleReplacementPlugin()%'];
+                config.entry = this.entry;
             } else {
-                this.$delete(this.config, 'plugins');
+                this.$delete(config, 'plugins');
+                this.$delete(config, 'entry');
+            }
+        },
+        entryPoint() {
+            let devServer = this.config.devServer;
+            let entryPoint = `webpack-dev-server/client?http://${devServer.host}:${devServer.port}`;
+            this.$set(this.entry[0].value, 0, entryPoint);
+            if (this.config.entry) {
+                this.config.entry = this.entry;
             }
         }
     }
